@@ -5,7 +5,7 @@ const Appcal = () => {
   const [display, setDisplay] = useState<string>("0");
   const handlePress = (value: string) => {
     if (display === "0" || display == "00") {
-        setDisplay(value);
+
     } else setDisplay((prevDisplay) => prevDisplay + value);
   };
 
@@ -135,6 +135,7 @@ const Appcal = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.buttonOp, { backgroundColor: "#CCAA66" }]}
+          
         >
           <Text style={styles.buttonText}>=</Text>
         </TouchableOpacity>
