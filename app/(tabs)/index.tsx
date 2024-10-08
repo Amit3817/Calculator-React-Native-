@@ -5,10 +5,17 @@ const Appcal = () => {
   const [display, setDisplay] = useState<string>("0");
   const handlePress = (value: string) => {
     if (display === "0" || display == "00") {
-
+        setDisplay(value);
     } else setDisplay((prevDisplay) => prevDisplay + value);
   };
-
+  const handleCalc = () => {
+    const result = eval(display);
+    setDisplay(result.toString());
+  };
+  const handleBack = () => {
+    if (display.length == 1) setDisplay("0");
+    else setDisplay(display.slice(0, -1));
+  };
 
   return (
     <View style={styles.container}>
@@ -26,7 +33,7 @@ const Appcal = () => {
         >
           <Text style={styles.buttonText}>%</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonOp} >
+        <TouchableOpacity style={styles.buttonOp} onPress={() => handleBack()}>
           <Text style={styles.buttonText}>&lt;</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -135,7 +142,7 @@ const Appcal = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.buttonOp, { backgroundColor: "#CCAA66" }]}
-          
+          onPress={() => handleCalc()}
         >
           <Text style={styles.buttonText}>=</Text>
         </TouchableOpacity>
