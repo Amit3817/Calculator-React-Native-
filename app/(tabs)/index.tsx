@@ -5,7 +5,9 @@ const Appcal = () => {
   const [display, setDisplay] = useState<string>("0");
   const handlePress = (value: string) => {
     if (display === "0" || display == "00") {
+      if (value <= "9" && value >= "1") {
         setDisplay(value);
+      } else if(value!='0'&&value!='00') setDisplay((prevDisplay) => prevDisplay + value);
     } else setDisplay((prevDisplay) => prevDisplay + value);
   };
   const handleCalc = () => {
